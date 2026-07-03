@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c1e"/><stop offset="0.55" stop-color="#4a3320"/><stop offset="1" stop-color="#d9a441"/></linearGradient><filter id="soft"><feGaussianBlur stdDeviation="18"/></filter></defs>
+<rect width="800" height="600" fill="url(#sky)"/>
+<circle cx="620" cy="330" r="154" fill="#f0c674" opacity="0.23" filter="url(#soft)"/>
+<circle cx="620" cy="330" r="70" fill="#f0c674" opacity="0.9"/>
+<path d="M0 600L0 241L67 305L133 313L200 318L267 332L333 355L400 245L467 344L533 276L600 323L667 300L733 290L800 356L800 600Z" fill="#6b5433"/>
+<ellipse cx="458" cy="340" rx="560" ry="34" fill="#faf6f0" opacity="0.18" filter="url(#soft)"/>
+<path d="M0 600L0 366L67 391L133 334L200 391L267 361L333 406L400 369L467 398L533 420L600 363L667 335L733 415L800 418L800 600Z" fill="#3d3524"/>
+<ellipse cx="735" cy="410" rx="560" ry="34" fill="#faf6f0" opacity="0.18" filter="url(#soft)"/>
+<path d="M0 600L0 484L67 413L133 424L200 413L267 436L333 437L400 403L467 417L533 452L600 432L667 399L733 426L800 399L800 600Z" fill="#1f2a20"/>
+<ellipse cx="440" cy="480" rx="560" ry="34" fill="#faf6f0" opacity="0.18" filter="url(#soft)"/>
+<path d="M0 600L0 522L67 500L133 511L200 523L267 520L333 525L400 525L467 504L533 510L600 527L667 530L733 539L800 493L800 600Z" fill="#10291f"/>
+<g transform="translate(412 420) scale(1.29)" fill="#10291f"><path d="M0 0 24 38H15l10 21H17l9 16H-26l9-16h-8l10-21h-9Z"/><rect x="-2.5" y="75" width="5" height="14"/></g>
+<g transform="translate(202 424) scale(1.21)" fill="#10291f"><path d="M0 0 24 38H15l10 21H17l9 16H-26l9-16h-8l10-21h-9Z"/><rect x="-2.5" y="75" width="5" height="14"/></g>
+<g transform="translate(504 425) scale(1.17)" fill="#10291f"><path d="M0 0 24 38H15l10 21H17l9 16H-26l9-16h-8l10-21h-9Z"/><rect x="-2.5" y="75" width="5" height="14"/></g>
+<g transform="translate(259 443) scale(0.73)" fill="#10291f"><path d="M0 0 24 38H15l10 21H17l9 16H-26l9-16h-8l10-21h-9Z"/><rect x="-2.5" y="75" width="5" height="14"/></g>
+<filter id="g"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="linear" slope="0.06"/></feComponentTransfer><feComposite operator="in" in2="SourceGraphic"/></filter>
+<rect width="800" height="600" filter="url(#g)"/>
+</svg>

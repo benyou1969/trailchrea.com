@@ -1,26 +1,185 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* ── Brand palette (see PRODUCT.md) ─────────────────────────────── */
+  --color-cedar: #1b4332;
+  --color-cedar-deep: #10291f;
+  --color-cedar-mist: #cfe0d4; /* secondary text on cedar surfaces */
+  --color-terracotta: #c05621;
+  --color-terracotta-deep: #9c3f12; /* terracotta as text on light bg */
+  --color-sand: #faf6f0;
+  --color-night: #1c1c1e;
+  --color-night-soft: #2a2a2e;
+  --color-moss: #4f7a5a; /* difficulty: facile */
+  --color-moss-deep: #2f5e3f;
+  --color-gold: #d9a441; /* prize / podium accent */
+  --color-stone: #52524c; /* muted body text on sand — AA on #FAF6F0 */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* ── Typography ─────────────────────────────────────────────────── */
+  --font-display: var(--font-barlow-condensed), "Arial Narrow", sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* ── Motion (mirrors src/lib/motion.ts) ─────────────────────────── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Semantic z-index scale ─────────────────────────────────────── */
+  --z-contours: -1;
+  --z-sticky: 40;
+  --z-drawer-backdrop: 50;
+  --z-drawer: 60;
+  --z-lightbox: 70;
+
+  --animate-marquee: marquee 32s linear infinite;
+  --animate-mist: mist 26s ease-in-out infinite alternate;
+  --animate-mist-slow: mist 44s ease-in-out infinite alternate-reverse;
+  --animate-stride: stride 3.2s ease-in-out infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes mist {
+    from {
+      transform: translateX(-6%);
+    }
+    to {
+      transform: translateX(6%);
+    }
+  }
+
+  /* Runner's-stride bob — continuous, for the DzMoves badge */
+  @keyframes stride {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10%);
+    }
+  }
+
+  /* Hero scroll cue — breathing descent (never bounce easing) */
+  --animate-cue: cue 2.2s ease-in-out infinite;
+  @keyframes cue {
+    0%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateY(6px);
+      opacity: 1;
+    }
+  }
+
+  /* Hero title letters — CSS so the static HTML paints before hydration */
+  --animate-letter-in: letter-in 0.7s var(--ease-out-expo) backwards;
+  @keyframes letter-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.6em) rotate(3deg);
+    }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-sand);
+  color: var(--color-night);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-terracotta);
+  color: var(--color-sand);
+}
+
+/* Brand focus ring — instant (never fades), survives overflow clipping */
+:focus-visible {
+  outline: 2px solid var(--color-terracotta);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.bg-night :focus-visible,
+.bg-cedar :focus-visible,
+.bg-cedar-deep :focus-visible {
+  outline-color: var(--color-gold);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* Display headings: Barlow Condensed, uppercase, tight but never cramped */
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  font-weight: 700;
+}
+
+/* ── Arabic (RTL) ───────────────────────────────────────────────────
+   Cairo replaces both text faces; letter-spacing must stay 0 —
+   tracking breaks cursive joining. Taller line-height keeps
+   ascenders/descenders from clipping in display headings. */
+html[lang="ar"] body {
+  font-family: var(--font-cairo), var(--font-inter), system-ui, sans-serif;
+}
+html[lang="ar"] .display {
+  font-family: var(--font-cairo), sans-serif;
+  line-height: 1.2;
+}
+html[lang="ar"] *,
+html[lang="ar"] {
+  letter-spacing: 0 !important;
+}
+
+/* Film-grain overlay for the hero — pure CSS, no asset request.
+   Normal blend on purpose: mix-blend-mode would force a full-screen
+   re-blend every frame over the moving parallax layers. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  background-size: 240px 240px;
+}
+
+/* Diagonal section cuts — top edge slices down left→right */
+.clip-diagonal-top {
+  clip-path: polygon(0 0, 100% 4rem, 100% 100%, 0 100%);
+  margin-top: -4rem;
+}
+.clip-diagonal-bottom {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 4rem), 0 100%);
+  margin-bottom: -4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
