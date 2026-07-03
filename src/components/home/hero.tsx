@@ -1,6 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
+import Image from "next/image";
 import {
   motion,
   useReducedMotion,
@@ -15,12 +16,7 @@ import { easeOutExpo, easeOutQuint, springSnappy } from "@/lib/motion";
 import { useI18n } from "@/components/i18n-provider";
 import { Magnetic } from "@/components/ui/magnetic";
 import { Countdown } from "@/components/home/countdown";
-import {
-  CedarForeground,
-  RidgeFar,
-  RidgeMid,
-  RidgeNear,
-} from "@/components/home/mountains";
+import { CedarForeground } from "@/components/home/mountains";
 
 /**
  * Staggered per-letter reveal; words stay unbreakable for small screens.
@@ -88,39 +84,20 @@ function ParallaxLayer({
   );
 }
 
-/** Pre-soft mist ellipse — gradient instead of a live blur filter. */
-function MistBand({ animation, alpha }: { animation: string; alpha: number }) {
-  return (
-    <div
-      className={`${animation} mx-[-10%] h-28 rounded-[100%]`}
-      style={{
-        background: `radial-gradient(50% 50% at 50% 50%, rgba(250,246,240,${alpha}), transparent 70%)`,
-      }}
-    />
-  );
-}
-
 export function Hero() {
   const { t } = useI18n();
   const ref = useRef<HTMLElement>(null);
   const reduced = useReducedMotion();
-  // daybreak overlay leaves the tree once its crossfade finishes
-  const [dawnDone, setDawnDone] = useState(false);
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
 
-  // Farther layers drift less; foreground races past — depth on scroll.
-  const yFar = useTransform(scrollYProgress, [0, 1], ["0%", "12%"]);
-  const yMid = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
-  const yNear = useTransform(scrollYProgress, [0, 1], ["0%", "34%"]);
+  // Photo drifts slower than the content — depth on scroll.
+  const yPhoto = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
   const yFront = useTransform(scrollYProgress, [0, 1], ["0%", "48%"]);
   const yContent = useTransform(scrollYProgress, [0, 1], ["0%", "60%"]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  // the sun sinks behind RidgeMid as you scroll: rate between yFar and yMid
-  const glowY = useTransform(scrollYProgress, [0, 1], ["0%", "26%"]);
-  const glowFade = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
   const cueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
 
   return (
@@ -128,74 +105,43 @@ export function Hero() {
       ref={ref}
       className="relative min-h-svh overflow-hidden bg-night"
     >
-      {/* dusk sky behind the ridgelines */}
+      {/* the centenary cedars of Chréa — the LCP, so it loads eagerly;
+          oversized inset + counter-zoom keep edges covered during parallax */}
+      <motion.div
+        aria-hidden="true"
+        style={reduced ? undefined : { y: yPhoto }}
+        className="absolute -inset-y-[6%] inset-x-0 will-change-transform"
+      >
+        <motion.div
+          className="relative h-full w-full"
+          initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.08 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 2.2, ease: easeOutQuint }}
+        >
+          <Image
+            src="/gallery/06-cedres-centenaires.webp"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        </motion.div>
+      </motion.div>
+
+      {/* legibility scrim — darker at the top (navbar) and bottom (seam) */}
       <div
         aria-hidden="true"
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, #1c1c1e 0%, #1e2b26 45%, #234438 100%)",
+            "linear-gradient(to bottom, rgba(20,20,22,0.72) 0%, rgba(20,20,22,0.48) 40%, rgba(20,20,22,0.55) 70%, rgba(20,20,22,0.9) 100%)",
         }}
       />
 
-      {/* morning glow — rises on load, sinks behind the mid ridge on scroll */}
-      <motion.div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={reduced ? undefined : { y: glowY, opacity: glowFade }}
-      >
-        <motion.div
-          className="absolute inset-0"
-          initial={reduced ? false : { opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 2.2, ease: easeOutQuint }}
-          style={{
-            transformOrigin: "68% 66%",
-            background:
-              "radial-gradient(58% 42% at 68% 66%, rgba(217,164,65,0.28) 0%, transparent 70%)",
-          }}
-        />
-      </motion.div>
-
-      {/* daybreak: pre-dawn darkness lifts as the title arrives */}
-      {!reduced && !dawnDone && (
-        <motion.div
-          aria-hidden="true"
-          className="absolute inset-0"
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ duration: 2.2, ease: easeOutQuint }}
-          onAnimationComplete={() => setDawnDone(true)}
-          style={{
-            background:
-              "linear-gradient(to bottom, #141416 0%, #17201c 45%, #1a2f28 100%)",
-          }}
-        />
-      )}
-
-      <ParallaxLayer y={reduced ? undefined : yFar}>
-        <RidgeFar className="h-[62svh] w-full opacity-80" />
-      </ParallaxLayer>
-
-      {/* mist band drifting between the far and mid ridges */}
-      <ParallaxLayer y={reduced ? undefined : yMid} className="bottom-[24svh]">
-        <MistBand animation="animate-mist" alpha={0.12} />
-      </ParallaxLayer>
-
-      <ParallaxLayer y={reduced ? undefined : yMid}>
-        <RidgeMid className="h-[52svh] w-full" />
-      </ParallaxLayer>
-
-      <ParallaxLayer y={reduced ? undefined : yNear} className="bottom-[10svh]">
-        <MistBand animation="animate-mist-slow" alpha={0.1} />
-      </ParallaxLayer>
-
-      <ParallaxLayer y={reduced ? undefined : yNear}>
-        <RidgeNear className="h-[42svh] w-full" />
-      </ParallaxLayer>
-
+      {/* cedar silhouette keeps the brand seam into the next section */}
       <ParallaxLayer y={reduced ? undefined : yFront}>
-        <CedarForeground className="h-[34svh] w-full" />
+        <CedarForeground className="h-[26svh] w-full" />
       </ParallaxLayer>
 
       <div className="grain absolute inset-0" aria-hidden="true" />

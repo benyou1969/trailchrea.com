@@ -10,16 +10,17 @@ import { useI18n } from "@/components/i18n-provider";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 
 /**
- * Placeholder scenes generated into /public/gallery — swap for real race
- * photography (same filenames) when the organizers deliver it.
+ * Race photography (Trail des Gorges de la Chiffa, mai 2026 — crédit
+ * DNT Photo). 1400px WebP; wide flags keep the md 4-col grid full:
+ * 2+2+1+1+2 = 8 cells. The ambiance shots (06–08, Unsplash) are
+ * reserved for section backgrounds — 06 is the hero — not the gallery.
  */
 const photos = [
-  { src: "/gallery/01-lever-de-soleil.svg", alt: "Lever de soleil sur les crêtes de Chréa", wide: true },
-  { src: "/gallery/02-cretes-dans-la-brume.svg", alt: "Crêtes dans la brume matinale" },
-  { src: "/gallery/03-foret-de-cedres.svg", alt: "Sentier dans la forêt de cèdres" },
-  { src: "/gallery/04-sentier-terracotta.svg", alt: "Single track au coucher du soleil" },
-  { src: "/gallery/05-nuit-au-sommet.svg", alt: "Nuit étoilée au sommet" },
-  { src: "/gallery/06-arrivee-doree.svg", alt: "Lumière dorée sur la ligne d'arrivée", wide: true },
+  { src: "/gallery/01-depart-gorges-chiffa.webp", alt: "Départ du Trail des Gorges de la Chiffa", wide: true },
+  { src: "/gallery/02-groupe-coureurs.webp", alt: "Groupe de coureurs au départ", wide: true },
+  { src: "/gallery/03-cyclistes-gorges.webp", alt: "Cyclistes accompagnant l'événement" },
+  { src: "/gallery/04-arrivee-en-famille.webp", alt: "Arrivée en famille, main dans la main" },
+  { src: "/gallery/05-pont-des-gorges.webp", alt: "Célébration sur le pont ferroviaire des gorges de la Chiffa", wide: true },
 ];
 
 /** Entrance counter-zoom paired with the tile's bottom-up unmask. */
