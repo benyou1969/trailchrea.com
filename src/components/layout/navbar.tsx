@@ -53,6 +53,10 @@ export function Navbar() {
   }, [open]);
 
   return (
+    // Fragment on purpose: the drawer must NOT live inside <header> —
+    // its backdrop-filter makes the header the containing block for fixed
+    // descendants, which would collapse the drawer's inset-0 to the 64px bar.
+    <>
     <header
       className={cn(
         // blur stays static (never transitioned — repaints the whole hero);
@@ -121,6 +125,7 @@ export function Navbar() {
           </button>
         </div>
       </nav>
+    </header>
 
       <AnimatePresence>
         {open && (
@@ -215,6 +220,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }
