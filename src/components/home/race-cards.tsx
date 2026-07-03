@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import { ArrowRight, Clock, Flag, Mountain, Route } from "lucide-react";
 
-import { difficultyMeta, event, formatDzd, races, type Race } from "@/config/race";
+import { difficultyMeta, formatDzd, races, type Race } from "@/config/race";
 import { cardTip } from "@/lib/motion";
 import { useI18n } from "@/components/i18n-provider";
 import { cn } from "@/lib/utils";
@@ -121,23 +121,20 @@ function TiltCard({ race }: { race: Race }) {
           </div>
         </dl>
 
-        <div className="mt-auto flex items-center gap-3 pt-7">
-          <a
-            href={event.registration.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="display flex-1 rounded-sm bg-terracotta px-5 py-3 text-center text-lg font-bold tracking-wide text-sand transition-[color,background-color,transform] duration-150 ease-(--ease-out-expo) hover:bg-terracotta-deep active:scale-[0.97]"
-          >
-            {t.races.register}
-          </a>
+        {/* Hidden until the /courses page ships:
+        <div className="mt-auto pt-7">
           <Link
             href={`/${lang}/courses#${race.id}`}
-            aria-label={`${t.races.details} — ${race.name}`}
-            className="flex size-11 items-center justify-center rounded-sm ring-1 ring-night/15 transition-all duration-150 ease-(--ease-out-expo) hover:bg-night hover:text-sand active:scale-[0.94] motion-safe:group-hover:translate-x-0.5 motion-safe:rtl:group-hover:-translate-x-0.5"
+            className="display flex w-full items-center justify-center gap-2 rounded-sm px-5 py-3 text-lg font-bold tracking-wide text-night ring-1 ring-night/15 transition-all duration-150 ease-(--ease-out-expo) hover:bg-night hover:text-sand active:scale-[0.97]"
           >
-            <ArrowRight className="size-5 rtl:-scale-x-100" aria-hidden="true" />
+            {t.races.details}
+            <ArrowRight
+              className="size-5 rtl:-scale-x-100 motion-safe:transition-transform motion-safe:group-hover:translate-x-0.5 motion-safe:rtl:group-hover:-translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
         </div>
+        */}
       </div>
     </motion.article>
   );
