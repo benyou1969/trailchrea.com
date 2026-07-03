@@ -5,6 +5,7 @@ import { Stats } from "@/components/home/stats";
 import { RaceCards } from "@/components/home/race-cards";
 import { Included } from "@/components/home/included";
 import { History } from "@/components/home/history";
+import { Welcome } from "@/components/home/welcome";
 import { Gallery } from "@/components/home/gallery";
 import { Organizers } from "@/components/home/organizers";
 
@@ -83,6 +84,7 @@ export default async function Home({
       <Included />
       <Gallery />
       <History />
+      <Welcome />
       {/* <Sponsors /> — hidden until the 2026 partner list is confirmed */}
       <Organizers />
     </>
