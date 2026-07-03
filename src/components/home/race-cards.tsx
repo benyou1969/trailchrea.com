@@ -9,9 +9,15 @@ import {
   useSpring,
   useTransform,
 } from "framer-motion";
-import { ArrowRight, Clock, Flag, Mountain, Route } from "lucide-react";
+import { ArrowRight, Award, Clock, Flag, Mountain, Route } from "lucide-react";
 
-import { difficultyMeta, formatDzd, races, type Race } from "@/config/race";
+import {
+  difficultyMeta,
+  formatDzd,
+  itraPointColors,
+  races,
+  type Race,
+} from "@/config/race";
 import { cardTip } from "@/lib/motion";
 import { useI18n } from "@/components/i18n-provider";
 import { cn } from "@/lib/utils";
@@ -79,10 +85,11 @@ function TiltCard({ race }: { race: Race }) {
           </span>
         </p>
 
-        {/* the card's hero graphic: the course's own elevation silhouette */}
+        {/* the card's hero graphic: the course's own elevation silhouette,
+            stroked in the race's official ITRA points color */}
         <ElevationProfile
           path={race.profilePath}
-          color={race.color}
+          color={itraPointColors[race.itraPoints]}
           className="mt-5 h-12 w-full"
         />
 
@@ -112,6 +119,19 @@ function TiltCard({ race }: { race: Race }) {
               </dd>
             </div>
           )}
+          <div className="flex items-center gap-2.5">
+            <Award className="size-4 shrink-0 text-stone" aria-hidden="true" />
+            <dt className="text-stone">{t.races.itraPoints}</dt>
+            <dd className="ms-auto">
+              {/* the official itra.run badge: white number on the points color */}
+              <span
+                className="flex size-6 items-center justify-center rounded-full text-xs font-bold text-white"
+                style={{ backgroundColor: itraPointColors[race.itraPoints] }}
+              >
+                {race.itraPoints}
+              </span>
+            </dd>
+          </div>
           <div className="flex items-center gap-2.5">
             <Route className="size-4 shrink-0 text-stone" aria-hidden="true" />
             <dt className="text-stone">{t.races.price}</dt>

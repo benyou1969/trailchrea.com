@@ -43,6 +43,7 @@ export const en: Dictionary = {
     start: "Start",
     cutoff: "Cutoff time",
     price: "Entry fee",
+    itraPoints: "ITRA points",
     details: "View details",
     register: "Register",
     prizeTable: "Prizes & awards",
@@ -97,6 +98,12 @@ export const en: Dictionary = {
       "5th edition",
       "6th edition",
     ],
+  },
+  welcome: {
+    title: "Algeria awaits you",
+    body:
+      "Here, trail running is far more than a race — it's a celebration. Clubs, families and volunteers from every corner of the country carry each edition, and runners from 9 countries all go home with the same memory: Algerian hospitality. From the bay of Algiers to the cedars of Chréa, come write your chapter with us.",
+    imageAlt: "Maqam Echahid, the Martyrs' Memorial, Algiers",
   },
   gallery: {
     title: "The Chréa vibe",

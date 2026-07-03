@@ -47,6 +47,7 @@ export const fr = {
     start: "Départ",
     cutoff: "Barrière horaire",
     price: "Inscription",
+    itraPoints: "Points ITRA",
     details: "Voir les détails",
     register: "S'inscrire",
     prizeTable: "Prix & récompenses",
@@ -101,6 +102,12 @@ export const fr = {
       "5ᵉ édition",
       "6ᵉ édition",
     ],
+  },
+  welcome: {
+    title: "L'Algérie vous attend",
+    body:
+      "Ici, le trail est bien plus qu'une course : c'est une fête populaire. Clubs, familles et bénévoles venus des quatre coins du pays font vivre chaque édition, et les coureurs de 9 pays repartent avec le même souvenir — l'hospitalité algérienne. De la baie d'Alger aux cèdres de Chréa, venez écrire votre chapitre avec nous.",
+    imageAlt: "Maqam Echahid, le Mémorial du Martyr, Alger",
   },
   gallery: {
     title: "L'ambiance Chréa",

@@ -47,6 +47,7 @@ export const ber: Dictionary = {
     start: "Abeddu",
     cutoff: "Talast n wakud",
     price: "Ajerred",
+    itraPoints: "Tinqiḍin ITRA",
     details: "Wali ugar",
     register: "Jerred",
     prizeTable: "Arrazen",
@@ -101,6 +102,12 @@ export const ber: Dictionary = {
       "Tiẓrigt tis 5",
       "Tiẓrigt tis 6",
     ],
+  },
+  welcome: {
+    title: "Lezzayer tettraǧu-ken",
+    body:
+      "Da, trail mačči kan d tazzla — d tameɣra. Leqhwas n tazzla, tiwaculin d imlḥaqen n yal tama n tmurt ttarran-d yal tiẓrigt, imazzalen n 9 n tmura ttuɣalen s yiwen n usmekti: tamerḥba tazzayrit. Seg yilel n Dzayer ɣer warz n Chréa, aset-d arut tamacahut-nwen yid-neɣ.",
+    imageAlt: "Maqam Echahid, Dzayer tamaneɣt",
   },
   gallery: {
     title: "Lǧu n Chréa",
