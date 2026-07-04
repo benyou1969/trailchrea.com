@@ -21,6 +21,7 @@ import {
 } from "@/lib/motion";
 import { useI18n } from "@/components/i18n-provider";
 import { Contours } from "@/components/ui/contours";
+import { RegisterButton } from "@/components/ui/register-button";
 import { Reveal } from "@/components/ui/reveal";
 import { cn } from "@/lib/utils";
 
@@ -326,15 +327,10 @@ export function History() {
                     className="mt-2.5 h-1.5 rounded-full border border-dashed border-gold/50"
                   />
                 </div>
-                <a
-                  href={event.registration.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="display mt-7 inline-flex items-center gap-2 rounded-sm bg-terracotta px-5 py-3 text-base font-bold tracking-wide text-sand transition-[color,background-color,transform] duration-150 ease-(--ease-out-expo) hover:bg-terracotta-deep active:scale-[0.97]"
-                >
+                <RegisterButton className="mt-7 px-5 py-3 text-base">
                   {t.hero.registerCta}
                   <ArrowUpRight className="size-4 rtl:-scale-x-100" aria-hidden="true" />
-                </a>
+                </RegisterButton>
               </div>
             </Reveal>
           </li>

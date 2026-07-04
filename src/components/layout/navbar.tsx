@@ -12,7 +12,6 @@ import {
 } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import { event } from "@/config/race";
 import { easeOutExpo } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import { useI18n } from "@/components/i18n-provider";
@@ -21,6 +20,7 @@ import {
   LanguageSwitcher,
 } from "@/components/layout/language-switcher";
 import { Logo } from "@/components/layout/logo";
+import { RegisterButton } from "@/components/ui/register-button";
 
 export function Navbar() {
   const { lang, t, dir } = useI18n();
@@ -104,16 +104,9 @@ export function Navbar() {
           <div className="hidden lg:block">
             <LanguageSwitcher />
           </div>
-          {/* Register button hidden for now — restore when registration opens:
-          <a
-            href={event.registration.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="display hidden rounded-sm bg-terracotta px-5 py-2.5 text-base font-bold tracking-wide text-sand transition-[color,background-color,transform] duration-150 ease-(--ease-out-expo) hover:bg-terracotta-deep active:scale-[0.97] sm:block"
-          >
+          <RegisterButton className="hidden px-5 py-2.5 text-base sm:inline-flex">
             {t.nav.register}
-          </a>
-          */}
+          </RegisterButton>
           <button
             type="button"
             onClick={() => setOpen(true)}
@@ -204,14 +197,9 @@ export function Navbar() {
                 <div className="mb-6">
                   <LanguagePills />
                 </div>
-                <a
-                  href={event.registration.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="display block rounded-sm bg-terracotta px-6 py-4 text-center text-2xl font-bold text-sand transition-transform duration-150 ease-(--ease-out-expo) active:scale-[0.97]"
-                >
+                <RegisterButton className="flex gap-3 px-6 py-4 text-2xl">
                   {t.nav.register}
-                </a>
+                </RegisterButton>
                 <p className="mt-3 text-center text-sm text-cedar-mist">
                   {t.hero.urgency}
                 </p>

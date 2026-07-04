@@ -11,10 +11,9 @@ import {
 } from "framer-motion";
 import { CalendarDays, ChevronDown, MapPin } from "lucide-react";
 
-import { event } from "@/config/race";
 import { easeOutExpo, easeOutQuint, springSnappy } from "@/lib/motion";
 import { useI18n } from "@/components/i18n-provider";
-import { Magnetic } from "@/components/ui/magnetic";
+import { RegisterButton } from "@/components/ui/register-button";
 import { Countdown } from "@/components/home/countdown";
 import { CedarForeground } from "@/components/home/mountains";
 
@@ -200,16 +199,9 @@ export function Hero() {
           transition={{ ...springSnappy, delay: 1.45 }}
           className="mt-10 flex flex-wrap items-center justify-center gap-4"
         >
-          <Magnetic>
-            <a
-              href={event.registration.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="display block rounded-sm bg-terracotta px-9 py-4 text-2xl font-bold tracking-wide text-sand shadow-lg shadow-terracotta/30 transition-[color,background-color,transform] duration-150 ease-(--ease-out-expo) hover:bg-terracotta-deep active:scale-[0.97]"
-            >
-              {t.hero.registerCta}
-            </a>
-          </Magnetic>
+          <RegisterButton className="gap-3 py-3.5 pe-9 ps-6 text-2xl shadow-lg shadow-terracotta/30">
+            {t.hero.registerCta}
+          </RegisterButton>
           <a
             href="#courses"
             className="display rounded-sm border border-sand/30 px-7 py-4 text-xl font-semibold tracking-wide text-sand transition-[color,background-color,border-color,transform] duration-150 ease-(--ease-out-expo) hover:border-sand/60 hover:bg-white/5 active:scale-[0.97]"

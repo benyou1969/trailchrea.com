@@ -133,7 +133,7 @@ export const event = {
     closesAt: "2026-11-15T23:59:59+01:00",
     closesDisplay: "15 novembre 2026",
     /** external — every S'inscrire CTA points here */
-    url: "https://dzmoves.com/en/events/trail-chrea/register",
+    url: "https://dzmoves.com/events/trail-chrea",
   },
   organizers: {
     main: "Gravir",
