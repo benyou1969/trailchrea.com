@@ -60,15 +60,15 @@ export function Welcome() {
                 dir="ltr"
                 className="absolute inset-0 flex flex-col justify-between p-3 text-sand sm:p-4"
               >
-                <div className="flex items-start justify-between">
-                  <span className="display text-lg tracking-wide">
-                    ALGÉRIE
+                <span className="display self-start text-lg tracking-wide">
+                  ALGÉRIE
+                </span>
+                <div className="flex items-end justify-between gap-3">
+                  <span className="display text-sm tracking-wider text-sand/90">
+                    TRAIL CHREA · {event.location.altitudeM} M
                   </span>
                   <span className="display text-3xl text-gold">{year}</span>
                 </div>
-                <span className="display text-sm tracking-wider text-sand/90">
-                  TRAIL CHREA · {event.location.altitudeM} M
-                </span>
               </div>
             </div>
           </motion.div>
