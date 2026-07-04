@@ -9,7 +9,7 @@ import { Welcome } from "@/components/home/welcome";
 import { Gallery } from "@/components/home/gallery";
 import { Organizers } from "@/components/home/organizers";
 
-/** schema.org SportsEvent — real date, place and 3 500 DZD offers. */
+/** schema.org SportsEvent — real date, place and per-race DZD offers. */
 function buildJsonLd(lang: Locale, description: string) {
   return {
     "@context": "https://schema.org",

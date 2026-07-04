@@ -161,7 +161,7 @@ export const en: Dictionary = {
           title: "Registration and payment",
           body: [
             "Registration takes place online through the DzMoves platform until November 15, 2026, subject to bib availability.",
-            "The entry fee is 3,500 DZD per runner, whichever race you choose. Bibs are personal and non-transferable: they may not be given away, resold or exchanged.",
+            "The entry fee depends on the race: 3,500 DZD for the Discovery Trail, 4,000 DZD for the Trail Challenge and 4,500 DZD for the Ultra Trail. Bibs are personal and non-transferable: they may not be given away, resold or exchanged.",
           ],
         },
         {

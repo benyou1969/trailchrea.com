@@ -169,7 +169,7 @@ export const fr = {
           title: "Inscription et paiement",
           body: [
             "L'inscription s'effectue en ligne via la plateforme DzMoves jusqu'au 15 novembre 2026, dans la limite des dossards disponibles.",
-            "Les frais d'inscription s'élèvent à 3 500 DZD par coureur, quelle que soit la course choisie. Le dossard est personnel et non transférable : il ne peut être ni cédé, ni revendu, ni échangé.",
+            "Les frais d'inscription dépendent de la course : 3 500 DZD pour le Discovery Trail, 4 000 DZD pour le Trail Challenge et 4 500 DZD pour l'Ultra Trail. Le dossard est personnel et non transférable : il ne peut être ni cédé, ni revendu, ni échangé.",
           ],
         },
         {

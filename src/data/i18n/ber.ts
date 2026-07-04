@@ -167,7 +167,7 @@ export const ber: Dictionary = {
           title: "Ajerred d uxelleṣ",
           body: [
             "Ajerred yettili srid deg internet ɣef tɣerɣert DzMoves alamma d 15 Nunembeṛ 2026, skud mazal llan dossards.",
-            "Ssuma n ujerred d 3 500 DZD i yal amazzal, anta tazzla i tferneḍ. Dossard d udmawan: ur yettunefk, ur yettwaznuz, ur yettwabeddal.",
+            "Ssuma n ujerred tettbeddil s tazzla: 3 500 DZD i Discovery Trail, 4 000 DZD i Trail Challenge, 4 500 DZD i Ultra Trail. Dossard d udmawan: ur yettunefk, ur yettwaznuz, ur yettwabeddal.",
           ],
         },
         {
