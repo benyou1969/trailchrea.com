@@ -161,6 +161,36 @@ html[lang="ar"] {
   background-size: 240px 240px;
 }
 
+/* Postage-stamp perforation — semicircular holes punched along all four
+   edges. Four repeating dot strips (hole centers exactly on the edges)
+   XOR'd out of a solid mask; hole spacing keeps corner strips from
+   overlapping. Without mask-composite the frame is a plain rectangle,
+   which still reads as a stamp. */
+.stamp-perf {
+  --hole: 5px;
+  --pitch: 17px;
+  mask-image:
+    radial-gradient(circle var(--hole), #000 99%, transparent),
+    radial-gradient(circle var(--hole), #000 99%, transparent),
+    radial-gradient(circle var(--hole), #000 99%, transparent),
+    radial-gradient(circle var(--hole), #000 99%, transparent),
+    linear-gradient(#000, #000);
+  mask-position:
+    0 calc(-1 * var(--hole)),
+    0 calc(100% + var(--hole)),
+    calc(-1 * var(--hole)) 0,
+    calc(100% + var(--hole)) 0,
+    0 0;
+  mask-size:
+    var(--pitch) calc(2 * var(--hole)),
+    var(--pitch) calc(2 * var(--hole)),
+    calc(2 * var(--hole)) var(--pitch),
+    calc(2 * var(--hole)) var(--pitch),
+    100% 100%;
+  mask-repeat: repeat-x, repeat-x, repeat-y, repeat-y, no-repeat;
+  mask-composite: exclude;
+}
+
 /* Diagonal section cuts — top edge slices down left→right */
 .clip-diagonal-top {
   clip-path: polygon(0 0, 100% 4rem, 100% 100%, 0 100%);
