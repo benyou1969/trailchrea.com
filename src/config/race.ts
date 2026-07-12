@@ -69,7 +69,7 @@ export const races: Race[] = [
     difficulty: "difficile",
     startTime: "08:00",
     cutoffTime: "12:00",
-    priceDzd: 4500,
+    priceDzd: 4000,
     itraPoints: 2,
     profilePath:
       "M0.0 6.0 L4.3 6.9 L8.5 9.1 L12.8 13.5 L17.0 19.0 L21.3 25.2 L25.5 31.2 L29.8 37.2 L34.0 40.2 L38.3 40.5 L42.6 38.2 L46.8 37.8 L51.1 38.6 L55.3 40.0 L59.6 41.6 L63.8 42.1 L68.1 42.5 L72.3 41.1 L76.6 39.9 L80.9 39.7 L85.1 40.5 L89.4 41.4 L93.6 40.6 L97.9 40.1 L102.1 41.0 L106.4 43.1 L110.6 44.0 L114.9 42.1 L119.1 38.9 L123.4 35.3 L127.7 32.9 L131.9 31.1 L136.2 30.6 L140.4 30.8 L144.7 33.0 L148.9 36.5 L153.2 38.8 L157.4 38.5 L161.7 35.5 L166.0 32.7 L170.2 30.0 L174.5 27.9 L178.7 25.6 L183.0 22.6 L187.2 17.6 L191.5 11.9 L195.7 7.8 L200.0 6.6",
@@ -84,7 +84,7 @@ export const races: Race[] = [
     elevationGainM: 711,
     difficulty: "modéré",
     startTime: "08:15",
-    priceDzd: 4000,
+    priceDzd: 3500,
     itraPoints: 1,
     profilePath:
       "M0 44 L28 32 L52 36 L84 14 L112 22 L144 10 L172 26 L200 40",
